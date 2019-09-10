@@ -11,7 +11,7 @@ contract TwoFactorAuth {
     /// Set the url and service strings on construction.
     /// @param _url The url this contract is intended to provide 2FA for.
     /// @param _service The name of the service this contract intends to provide 2FA for.
-    function TwoFactorAuth(string _url, string _service) public {
+    constructor(string _url, string _service) public {
         url = _url;
         service = _service;
     }
