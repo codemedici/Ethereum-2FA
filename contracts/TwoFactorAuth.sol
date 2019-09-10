@@ -1,6 +1,5 @@
 pragma solidity ^0.4.13;
 
-
 /// Use an ethereum address as proof of 2FA instead of a phone number.
 contract TwoFactorAuth {
     string public url;
@@ -12,18 +11,18 @@ contract TwoFactorAuth {
     /// Set the url and service strings on construction.
     /// @param _url The url this contract is intended to provide 2FA for.
     /// @param _service The name of the service this contract intends to provide 2FA for.
-    function TwoFactorAuth(string _url, string _service) {
+    function TwoFactorAuth(string _url, string _service) public {
         url = _url;
         service = _service;
     }
 
     /// Default function rejects payments but has enough gas to authenticate users.
     function () external {
-        Authenticated(msg.sender);
+        emit Authenticated(msg.sender);
     }
 
     /// Authenticate a user.
-    function authenticate() {
-        Authenticated(msg.sender);
+    function authenticate() public {
+        emit Authenticated(msg.sender);
     }
 }
